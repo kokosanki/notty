@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import EditNote from "./EditNote";
 
 const Container = styled.div`
   width: 70vw;
@@ -11,7 +12,7 @@ const Panel = styled.div`
   background-color: #000;
   color: #fff;
   display: flex;
-    justify-content: flex-end;
+  justify-content: flex-end;
 `;
 
 const Li = styled.li`
@@ -20,6 +21,8 @@ const Li = styled.li`
   font-size: 15px;
   border: 1px solid #696969;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Button = styled.button`
@@ -39,15 +42,38 @@ const Button = styled.button`
   }
 `;
 
-const Note = ({ key, note }) => {
+const Note = ({ note, removeNote, id, editNote }) => {
+  const [isActive, changeActive] = useState(false);
+
+  const handleClickDelete = e => {
+    removeNote(e);
+  };
+
+  const handleClickChange = () => {
+    changeActive(true);
+  };
+
   return (
     <Container>
       <Panel>
-        <Button>Edit</Button>
-        <Button>Delete</Button>
+        <Button onClick={handleClickChange}>Edit</Button>
+        <Button id={id} onClick={e => handleClickDelete(e)}>
+          Delete
+        </Button>
       </Panel>
       <div>
-        <Li key={key}>{note}</Li>
+        <Li>
+          {isActive ? (
+            <EditNote
+              note={note}
+              editNote={editNote}
+              id={id}
+              changeActive={changeActive}
+            />
+          ) : (
+            note
+          )}
+        </Li>
       </div>
     </Container>
   );

@@ -5,13 +5,12 @@ import NoteForm from "./NoteForm";
 import styled from "styled-components";
 
 const Ul = styled.ul`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 0
-    ;
-`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+`;
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -19,12 +18,33 @@ const Notes = () => {
   const addNote = note => {
     setNotes([...notes, { note, id: uuidv4() }]);
   };
+
+  const removeNote = e => {
+    setNotes(notes.filter(note => note.id !== e.target.id));
+  };
+
+  const editNote = (e, content) => {
+    setNotes(
+      notes.map(note => {
+        if (note.id !== e.target.id) return note;
+        return { ...note, note: content };
+      })
+    );
+  };
+
   return (
     <div>
       <NoteForm addNote={addNote} />
       <Ul>
         {notes.map(note => (
-          <Note key={note.id} note={note.note} />
+          <Note
+            key={note.id}
+            id={note.id}
+            note={note.note}
+            addNote={addNote}
+            removeNote={removeNote}
+            editNote={editNote}
+          />
         ))}
       </Ul>
     </div>

@@ -11,7 +11,7 @@ const Form = styled.form`
 `;
 
 const Textarea = styled.textarea`
-  width: 70vw;
+  width: 100%;
   height: 200px;
   text-align: center;
   border-radius: 5px;
@@ -37,25 +37,24 @@ const Button = styled.input`
   }
 `;
 
-const NoteForm = ({ addNote }) => {
-  const [noteContent, setNote] = useState("");
-  const handleSubmit = e => {
+const EditNote = ({ note, editNote, id, changeActive }) => {
+  const [noteContent, setNote] = useState(note);
+  const handleClick = e => {
     e.preventDefault();
-    addNote(noteContent);
-    setNote("");
+    editNote(e, noteContent);
+    changeActive(false);
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <Textarea
         value={noteContent}
         required
         onChange={e => setNote(e.target.value)}
-        placeholder="Write your note here"
       />
 
-      <Button type="submit" value="add note" />
+      <Button onClick={handleClick} id={id} type="submit" value="edit note" />
     </Form>
   );
 };
 
-export default NoteForm;
+export default EditNote;
