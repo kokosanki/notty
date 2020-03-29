@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import Notes from "./components/Notes";
 import { Normalize, normalize } from "styled-normalize";
 import { createGlobalStyle } from "styled-components";
+import CurrentPage from "./Pages/CurrentPage";
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <Normalize />
-      <Notes />
+      <CurrentPage />
       <GlobalStyle />
     </div>
   );

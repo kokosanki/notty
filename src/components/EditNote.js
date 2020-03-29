@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import firebase from "../firebase";
 
 const Form = styled.form`
   width: 100%;
@@ -43,6 +44,10 @@ const EditNote = ({ note, editNote, id, changeActive }) => {
     e.preventDefault();
     editNote(e, noteContent);
     changeActive(false);
+    const db = firebase.firestore();
+    db.collection("notes")
+      .doc(id)
+      .update({ note: noteContent });
   };
   return (
     <Form>
@@ -52,7 +57,7 @@ const EditNote = ({ note, editNote, id, changeActive }) => {
         onChange={e => setNote(e.target.value)}
       />
 
-      <Button onClick={handleClick} id={id} type="submit" value="edit note" />
+      <Button onClick={handleClick} id={id} type="submit" value="save" />
     </Form>
   );
 };

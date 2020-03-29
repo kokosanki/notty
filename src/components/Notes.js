@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Note from "./Note";
 import NoteForm from "./NoteForm";
 import styled from "styled-components";
+import firebase from "../firebase";
+import { AuthContext } from "../Auth.js";
 
 const Ul = styled.ul`
   display: flex;
@@ -14,13 +16,30 @@ const Ul = styled.ul`
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const db = firebase.firestore();
+    return db.collection("notes").onSnapshot(snapshot => {
+      const notesData = [];
+      snapshot.forEach(doc => notesData.push({ ...doc.data(), id: doc.id }));
+      setNotes(notesData);
+    });
+  }, []);
 
   const addNote = note => {
-    setNotes([...notes, { note, id: uuidv4() }]);
+    const id = uuidv4();
+    setNotes([...notes, { note, id, currentUser }]);
+    const db = firebase.firestore();
+    db.collection("notes").add({ note, id, currentUser: currentUser.uid });
   };
 
   const removeNote = e => {
     setNotes(notes.filter(note => note.id !== e.target.id));
+    const db = firebase.firestore();
+    db.collection("notes")
+      .doc(e.target.id)
+      .delete();
   };
 
   const editNote = (e, content) => {
@@ -31,12 +50,21 @@ const Notes = () => {
       })
     );
   };
+  let currentUserNotes = [];
+
+  const setCurrentUserNotes = () => {
+    currentUserNotes = notes.filter(
+      note => note.currentUser === currentUser.uid
+    );
+  };
+
+  setCurrentUserNotes();
 
   return (
     <div>
       <NoteForm addNote={addNote} />
       <Ul>
-        {notes.map(note => (
+        {currentUserNotes.map(note => (
           <Note
             key={note.id}
             id={note.id}
