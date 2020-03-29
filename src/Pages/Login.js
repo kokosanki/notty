@@ -1,9 +1,17 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import app from "../firebase.js";
 import { AuthContext } from "../Auth.js";
+import styled from "styled-components";
+
+const Form = styled.form`
+  color: ${({ theme: { colors } }) => colors.persianGreen};
+`
 
 const Login = ({ history }) => {
+  const navItem = {name: 'Sign Up', path: '/signup'}
+
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
@@ -29,7 +37,7 @@ const Login = ({ history }) => {
   return (
     <div>
       <h1>Log in</h1>
-      <form onSubmit={handleLogin}>
+      <Form onSubmit={handleLogin}>
         <label>
           Email
           <input
@@ -49,7 +57,13 @@ const Login = ({ history }) => {
           />
         </label>
         <button type="submit">Log in</button>
-      </form>
+      </Form>
+
+      <div>
+      <NavLink to={navItem.path}>
+        {navItem.name}
+      </NavLink>
+    </div>
     </div>
   );
 };

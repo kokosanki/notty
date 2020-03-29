@@ -1,8 +1,11 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
 import app from "../firebase";
+import { NavLink } from "react-router-dom";
 
 const SignUp = ({ history }) => {
+  const navItem = {name: 'Log in', path: '/login'}
+
   const handleSignUp = useCallback(
     async event => {
       event.preventDefault();
@@ -43,6 +46,10 @@ const SignUp = ({ history }) => {
         </label>
         <button type="submit">Sign Up</button>
       </form>
+
+      <NavLink to={navItem.path}>
+        {navItem.name}
+      </NavLink>
     </div>
   );
 };

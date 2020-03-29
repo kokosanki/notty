@@ -1,14 +1,14 @@
-import firebase from 'firebase';
-import 'firebase/auth';
+import firebase from "firebase";
+import "firebase/auth";
 
-const app = firebase.initializeApp ({
-    apiKey: "AIzaSyBFOz1h-GnJGaWwxQw0wpn8IlTWNNLzFSs",
-    authDomain: "notty-75add.firebaseapp.com",
-    databaseURL: "https://notty-75add.firebaseio.com",
-    projectId: "notty-75add",
-    storageBucket: "notty-75add.appspot.com",
-    messagingSenderId: "554450352255",
-    appId: "1:554450352255:web:bd0fb9602947c53fec674a"
-  });
+const app = firebase.initializeApp({
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
+});
 
-  export default app;
+export default app;
