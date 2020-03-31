@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { Normalize, normalize } from "styled-normalize";
 import { createGlobalStyle } from "styled-components";
 import CurrentPage from "./Pages/CurrentPage";
