@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const RightWrapper = styled.div`
+const StyledRightWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,10 +19,10 @@ const RightWrapper = styled.div`
   }
 `;
 
-const StyledRightWrapper = ({children}) => {
+const RightWrapper = ({children}) => {
     return ( 
-        <RightWrapper>{children}</RightWrapper>
+        <StyledRightWrapper>{children}</StyledRightWrapper>
      );
 }
  
-export default StyledRightWrapper;
+export default RightWrapper;

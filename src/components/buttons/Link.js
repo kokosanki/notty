@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
-const Link = styled.div`
+const StyledLink = styled.div`
   border: 2px solid #fff;
   border-radius: 15px;
-  padding: 5px 10px;
+  padding: 5px 12px;
   a {
     color: #fff;
     text-decoration: none;
@@ -23,10 +22,10 @@ const Link = styled.div`
   }
 `;
 
-const StyledLink = ({children}) => {
+const Link = ({children}) => {
     return ( 
-        <Link>{children}</Link>
+        <StyledLink>{children}</StyledLink>
      );
 }
  
-export default StyledLink;
+export default Link;

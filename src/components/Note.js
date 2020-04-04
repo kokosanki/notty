@@ -1,45 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import EditNote from "./EditNote";
+import NoteEditor from "./NoteEditor";
+import SecondaryButton from './buttons/SecondaryButton';
+import Li from './Li';
+import EditPanel from '../containers/EditPanel';
 
 const Container = styled.div`
-  width: 70vw;
-`;
-
-const Panel = styled.div`
-  padding: 10px;
-  font-size: 15px;
-  background-color: #000;
-  color: #fff;
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const Li = styled.li`
-  padding: 10px;
-  list-style: none;
-  font-size: 15px;
-  border: 1px solid #696969;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Button = styled.button`
-  margin-left: 5px;
-  margin-right: 5px;
-  border-radius: 5px;
-  background: #00c48f;
-  border: none;
-  padding: 5px 8px;
-  color: #fff;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
-  &:active {
-    background-color: #3eedad;
-  }
+  width: 100%;
 `;
 
 const Note = ({ note, removeNote, id, editNote }) => {
@@ -55,16 +22,16 @@ const Note = ({ note, removeNote, id, editNote }) => {
 
   return (
     <Container>
-      <Panel>
-        <Button onClick={handleClickChange}>Edit</Button>
-        <Button id={id} onClick={e => handleClickDelete(e)}>
+      <EditPanel>
+        <SecondaryButton onClick={handleClickChange}>Edit</SecondaryButton>
+        <SecondaryButton id={id} onClick={(e) => handleClickDelete(e)}>
           Delete
-        </Button>
-      </Panel>
+        </SecondaryButton>
+      </EditPanel>
       <div>
         <Li>
           {isActive ? (
-            <EditNote
+            <NoteEditor
               note={note}
               editNote={editNote}
               id={id}

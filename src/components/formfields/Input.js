@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Input = styled.input`
+const StyledInput = styled.input`
   border: 2px solid ${({ theme: { colors } }) => colors.main};
   border-radius: 5px;
   padding: 5px 10px;;
@@ -11,15 +11,17 @@ const Input = styled.input`
   }
 `;
 
-const StyledInput = ({name, type, placeholder}) => {
+const 
+Input = ({name, type, placeholder}) => {
     return ( 
-        <Input
+        <StyledInput
         name={name}
         type={type}
-        placeholder={placeholder}></Input>
+        placeholder={placeholder}></StyledInput>
      );
 }
  
 
 
-export default StyledInput;
+export default 
+Input;

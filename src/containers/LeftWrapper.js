@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const LeftWrapper = styled.div`
+const StyledLeftWrapper = styled.div`
   color: ${({ theme: { colors } }) => colors.main};
   display: flex;
   flex-direction: column;
@@ -17,8 +17,8 @@ const LeftWrapper = styled.div`
   }
 `;
 
-const StyledLeftWrapper = ({children}) => {
-  return <LeftWrapper>{children}</LeftWrapper>;
+const LeftWrapper = ({children}) => {
+  return <StyledLeftWrapper>{children}</StyledLeftWrapper>;
 };
 
-export default StyledLeftWrapper;
+export default LeftWrapper;

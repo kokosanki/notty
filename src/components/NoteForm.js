@@ -1,59 +1,26 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-
-const Form = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-`;
-
-const Textarea = styled.textarea`
-  width: 70vw;
-  height: 200px;
-  text-align: center;
-  border-radius: 5px;
-  &:focus {
-    outline: none;
-  }
-`;
-
-const Button = styled.input`
-  background-color: #00c48f;
-  color: #fff;
-  font-weight: bold;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 5px;
-  cursor: pointer;
-  &:active {
-    background-color: #3eedad;
-  }
-  &:focus {
-    outline: none;
-  }
-`;
+import Textarea from "./formfields/Textarea";
+import Form from "./Form";
+import Button from "./buttons/Button";
 
 const NoteForm = ({ addNote }) => {
   const [noteContent, setNote] = useState("");
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     addNote(noteContent);
     setNote("");
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form handleSubmit={handleSubmit}>
+
       <Textarea
         value={noteContent}
         required
-        onChange={e => setNote(e.target.value)}
+        onChange={(e) => setNote(e.target.value)}
         placeholder="Write your note here"
       />
 
-      <Button type="submit" value="add note" />
+      <Button type="submit">add note</Button>
     </Form>
   );
 };
