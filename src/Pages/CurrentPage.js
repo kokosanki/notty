@@ -18,6 +18,7 @@ const CurrentPage = () => {
       </Router>
     </AuthProvider>
   );
+  // }
 };
 
 export default CurrentPage;
