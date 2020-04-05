@@ -16,7 +16,7 @@ const SignUp = ({ history }) => {
   const navItem = { name: "Log in", path: "/login" };
 
   const handleSubmit = useCallback(
-    async event => {
+    async (event) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
@@ -36,12 +36,8 @@ const SignUp = ({ history }) => {
       <LeftWrapper>
         <H1>Create an account</H1>
         <Form handleSubmit={handleSubmit}>
-            <Input name="email" type="email" placeholder="Email" />
-            <Input
-              name="password"
-              type="password"
-              placeholder="Password"
-            />
+          <Input name="email" type="email" placeholder="Email" />
+          <Input name="password" type="password" placeholder="Password" />
           <Button>Sign up</Button>
         </Form>
       </LeftWrapper>

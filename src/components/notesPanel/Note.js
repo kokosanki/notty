@@ -1,30 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import NoteEditor from "./NoteEditor";
-import SecondaryButton from './buttons/SecondaryButton';
-import Li from './Li';
-import EditPanel from '../containers/EditPanel';
+import SecondaryButton from "../buttons/SecondaryButton";
+import Li from "../Li";
+import EditPanel from "../../containers/EditPanel";
 
 const Container = styled.div`
   width: 100%;
 `;
 
 const Note = ({ note, removeNote, id, editNote }) => {
-  const [isActive, changeActive] = useState(false);
-
-  const handleClickDelete = e => {
-    removeNote(e);
-  };
-
-  const handleClickChange = () => {
-    changeActive(true);
-  };
+  const [isActive, setActive] = useState(false);
 
   return (
     <Container>
       <EditPanel>
-        <SecondaryButton onClick={handleClickChange}>Edit</SecondaryButton>
-        <SecondaryButton id={id} onClick={(e) => handleClickDelete(e)}>
+        <SecondaryButton onClick={() => setActive(true)}>Edit</SecondaryButton>
+        <SecondaryButton id={id} onClick={(e) => removeNote(e)}>
           Delete
         </SecondaryButton>
       </EditPanel>
@@ -35,7 +27,7 @@ const Note = ({ note, removeNote, id, editNote }) => {
               note={note}
               editNote={editNote}
               id={id}
-              changeActive={changeActive}
+              changeActive={setActive}
             />
           ) : (
             note

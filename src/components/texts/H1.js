@@ -8,7 +8,7 @@ const StyledH1 = styled.h1`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.large};
 `;
 
-const H1 = ({children}) => {
+const H1 = ({ children }) => {
   return <StyledH1>{children}</StyledH1>;
 };
 

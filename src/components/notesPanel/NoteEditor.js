@@ -1,24 +1,26 @@
 import React, { useState } from "react";
-import firebase from "../firebase";
-import Textarea from "./formfields/Textarea";
-import Button from "./buttons/Button";
-import Form from "./Form";
+import firebase from "../../firebase";
+import Textarea from "../formfields/Textarea";
+import Button from "../buttons/Button";
+import Form from "../Form";
 
 const NoteEditor = ({ note, editNote, id, changeActive }) => {
-  const [noteContent, setNote] = useState(note);
+  const [content, setContent] = useState(note);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    editNote(e, noteContent);
+    editNote(e, content);
     changeActive(false);
     const db = firebase.firestore();
-    db.collection("notes").doc(id).update({ note: noteContent });
+    db.collection("notes").doc(id).update({ note: content });
   };
+
   return (
     <Form handleSubmit={handleSubmit}>
       <Textarea
-        value={noteContent}
+        value={content}
         required
-        onChange={(e) => setNote(e.target.value)}
+        onChange={(e) => setContent(e.target.value)}
       />
       <Button>save</Button>
     </Form>

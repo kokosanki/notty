@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import app from "../firebase.js";
 import { AuthContext } from "../Auth.js";
 import Button from "../components/buttons/Button.js";
@@ -18,7 +18,7 @@ const Login = ({ history }) => {
   const navItem = { name: "Sign Up", path: "/signup" };
 
   const handleSubmit = useCallback(
-    async event => {
+    async (event) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {

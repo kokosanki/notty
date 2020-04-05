@@ -10,6 +10,7 @@ const StyledButton = styled.button`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   width: 100px;
   padding: 5px 0;
+  user-select: none;
   cursor: pointer;
   &:focus {
     outline: none;

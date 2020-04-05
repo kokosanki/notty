@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import Textarea from "./formfields/Textarea";
-import Form from "./Form";
-import Button from "./buttons/Button";
+import Textarea from "../formfields/Textarea";
+import Form from "../Form";
+import Button from "../buttons/Button";
 
 const NoteForm = ({ addNote }) => {
-  const [noteContent, setNote] = useState("");
+  const [content, setContent] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNote(noteContent);
-    setNote("");
+    addNote(content);
+    setContent("");
   };
   return (
     <Form handleSubmit={handleSubmit}>
-
       <Textarea
-        value={noteContent}
+        value={content}
         required
-        onChange={(e) => setNote(e.target.value)}
+        onChange={(e) => setContent(e.target.value)}
         placeholder="Write your note here"
       />
 

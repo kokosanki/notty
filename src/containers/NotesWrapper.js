@@ -7,7 +7,7 @@ const StyledWrapper = styled.div`
     width: 85vw;
   }
 `;
-const NotesWrapper = ({children}) => {
+const NotesWrapper = ({ children }) => {
   return <StyledWrapper>{children}</StyledWrapper>;
 };
 

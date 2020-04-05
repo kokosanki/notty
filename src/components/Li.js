@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledLi = styled.li`
   padding: 10px;
@@ -12,10 +12,10 @@ const StyledLi = styled.li`
   flex-direction: column;
   position: relative;
   background-color: #fff;
-`
+`;
 
-const Li = ({children}) => {
-    return ( <StyledLi>{children}</StyledLi> );
-}
- 
+const Li = ({ children }) => {
+  return <StyledLi>{children}</StyledLi>;
+};
+
 export default Li;

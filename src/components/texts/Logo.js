@@ -9,6 +9,7 @@ const StyledLogo = styled.h1`
   width: 100%;
   margin: 10px 0;
   font-weight: normal;
+  user-select: none;
 `;
 
 const Logo = () => {

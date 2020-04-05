@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledRightWrapper = styled.div`
   display: flex;
@@ -8,7 +8,8 @@ const StyledRightWrapper = styled.div`
   align-items: center;
   color: #fff;
   width: 35%;
-  background-image: ${({ theme: { backgroundImages } }) => backgroundImages.main};
+  background-image: ${({ theme: { backgroundImages } }) =>
+    backgroundImages.main};
   border-radius: 0px 10px 10px 0;
   padding: 10px;
   text-align: center;
@@ -19,10 +20,8 @@ const StyledRightWrapper = styled.div`
   }
 `;
 
-const RightWrapper = ({children}) => {
-    return ( 
-        <StyledRightWrapper>{children}</StyledRightWrapper>
-     );
-}
- 
+const RightWrapper = ({ children }) => {
+  return <StyledRightWrapper>{children}</StyledRightWrapper>;
+};
+
 export default RightWrapper;

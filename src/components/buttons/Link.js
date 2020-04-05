@@ -1,10 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledLink = styled.div`
   border: 2px solid #fff;
   border-radius: 15px;
   padding: 5px 12px;
+  user-select: none;
   a {
     color: #fff;
     text-decoration: none;
@@ -22,10 +23,8 @@ const StyledLink = styled.div`
   }
 `;
 
-const Link = ({children}) => {
-    return ( 
-        <StyledLink>{children}</StyledLink>
-     );
-}
- 
+const Link = ({ children }) => {
+  return <StyledLink>{children}</StyledLink>;
+};
+
 export default Link;

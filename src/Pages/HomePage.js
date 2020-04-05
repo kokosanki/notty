@@ -1,6 +1,6 @@
 import React from "react";
 import config from "../firebase";
-import Notes from "../components/Notes";
+import Notes from "../components/notesPanel/Notes";
 import styled from "styled-components";
 import Wrapper from "../containers/Wrapper";
 import Logo from "../components/texts/Logo";
@@ -20,7 +20,7 @@ const StyledButton = styled(Button)`
 const HomePage = () => {
   return (
     <Wrapper>
-      <Logo/>
+      <Logo />
       <StyledButton onClick={() => config.auth().signOut()}>
         Sign out
       </StyledButton>

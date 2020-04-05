@@ -16,8 +16,17 @@ const StyledTextarea = styled.textarea`
   }
 `;
 
-const Textarea = ({ children, value, placeholder, onChange}) => {
-  return <StyledTextarea required value={value} placeholder={placeholder} onChange={onChange}>{children}</StyledTextarea>;
+const Textarea = ({ children, value, placeholder, onChange }) => {
+  return (
+    <StyledTextarea
+      required
+      value={value}
+      placeholder={placeholder}
+      onChange={onChange}
+    >
+      {children}
+    </StyledTextarea>
+  );
 };
 
 export default Textarea;

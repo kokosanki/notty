@@ -17,7 +17,7 @@ const StyledLeftWrapper = styled.div`
   }
 `;
 
-const LeftWrapper = ({children}) => {
+const LeftWrapper = ({ children }) => {
   return <StyledLeftWrapper>{children}</StyledLeftWrapper>;
 };
 

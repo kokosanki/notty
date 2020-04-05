@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: #fff;
     display: flex;
-    width: 100vw;
+    width: 100%;
     flex-direction: column;
   }
 `;
@@ -25,6 +25,7 @@ function App() {
       </div>
     </Theme>
   );
+  // }
 }
 
 export default App;
